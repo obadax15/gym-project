@@ -13,7 +13,7 @@
 ---
 
 ## 📸 Screenshots
-| Home Screen                                                 | Workout Plan Screen                                     | Notifications                                              |
+| Register Screen                                             | Home Screen                                             | Workout Screen                                             |
 |-------------------------------------------------------------|---------------------------------------------------------|------------------------------------------------------------|
 | ![Register Screen](assets/images/Screenshot_1733330499.png) | ![Home Screen](assets/images/Screenshot_1737854552.png) | ![Workout Screen](assets/images/Screenshot_1737854657.png) |
 
