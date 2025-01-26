@@ -1,16 +1,32 @@
-# gymproject
+# 🏋️ Gym Project
 
-A new Flutter project.
+## 📝 Description
+**Gym Project** is a fitness-focused app designed for people who want to build their bodies and take better care of themselves. The app connects users with coaches who can create personalized workout routines and diet programs. It also features a notification system to help users stay on track with their fitness goals.
 
-## Getting Started
+---
 
-This project is a starting point for a Flutter application.
+## 🚀 Features
+- Coaches can create **workout routines** tailored to each user's needs.
+- Personalized **diet programs** for users to follow.
+- A **notification feature** to remind users of their workouts, diet schedules, and other updates.
 
-A few resources to get you started if this is your first Flutter project:
+---
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+## 📸 Screenshots
+| Home Screen                                                 | Workout Plan Screen                                     | Notifications                                              |
+|-------------------------------------------------------------|---------------------------------------------------------|------------------------------------------------------------|
+| ![Register Screen](assets/images/Screenshot_1733330499.png) | ![Home Screen](assets/images/Screenshot_1737854552.png) | ![Workout Screen](assets/images/Screenshot_1737854657.png) |
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+---
+
+## 🛠️ Tools & Libraries
+- [Flutter SDK](https://flutter.dev)
+- [Cubit for State Management](https://pub.dev/packages/flutter_bloc)
+- [Local Notifications](https://pub.dev/packages/flutter_local_notifications)
+
+---
+
+## 🔧 Setup & Installation
+1. Clone this repository:
+   ```bash
+   git clone https://github.com/YourUsername/gym-project.git
