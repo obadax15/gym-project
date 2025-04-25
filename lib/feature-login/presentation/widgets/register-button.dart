@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:gymproject/feature-login/presentation/pages/login-screen.dart';
 
 import '../../../core/Strings/token.dart';
 import '../../../feature-home-screen/presentation/pages/home-screen.dart';
@@ -11,8 +12,8 @@ class RegisterButton extends StatelessWidget {
   final TextEditingController passwordController;
   final  TextEditingController passwordConfirmationController;
   final  TextEditingController phoneNumberController;
-
-  const RegisterButton({super.key, required this.usernameController, required this.emailController, required this.passwordController, required this.passwordConfirmationController, required this.phoneNumberController});
+final Function formsubmit;
+  const RegisterButton({super.key, required this.usernameController, required this.emailController, required this.passwordController, required this.passwordConfirmationController, required this.phoneNumberController, required this.formsubmit});
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<RegisterCubit, RegisterState>(
@@ -20,7 +21,7 @@ class RegisterButton extends StatelessWidget {
         // TODO: implement listener
         if (state.registerStatus == RegisterStatus.success) {
           ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('Register Successfully'),backgroundColor: Colors.greenAccent,));
-          Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (_) => HomeScreen()));
+          Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (_) => LogInScreen(isupdate:true)));
         }
       },
       builder: (context, state) {
@@ -34,7 +35,7 @@ class RegisterButton extends StatelessWidget {
               passwordConfirmationController.text,
               phoneNumberController.text,
             );
-
+            formsubmit();
           },
           child: Container(
             decoration: BoxDecoration(

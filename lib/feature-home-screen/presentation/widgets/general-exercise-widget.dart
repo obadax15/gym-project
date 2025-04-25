@@ -1,9 +1,8 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:gymproject/core/Strings/color.dart';
 
 class GeneralExerciseWidget extends StatelessWidget {
-  const GeneralExerciseWidget({Key? key}) : super(key: key);
+  const GeneralExerciseWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -14,56 +13,77 @@ class GeneralExerciseWidget extends StatelessWidget {
       padding: const EdgeInsets.all(5.0),
       child: Container(
         decoration: BoxDecoration(
-
           borderRadius: BorderRadius.circular(12),
           color: blackop,
         ),
-        width: width / 2.22,
-        height: height / 2.5,
+        width: width / 2.32,
+        height: height / 2.3,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start, // Aligns items to the start
           children: [
-            Container(child: Image.asset('assets/images/img_9.png',fit: BoxFit.fill,),width: width/2.23,height: height/4.5,),
-            const SizedBox(height: 8), // Add spacing
-          Column(children: [
-          Align(
-            alignment:Alignment.centerLeft,
-            child: Text(
-              'Squat exercise',
-              style: TextStyle(
-                color: textPurbleColor,
-                fontSize: 18,
-                fontWeight: FontWeight.w400,
+            SizedBox(
+              width: width / 2.23,
+              height: height / 4,
+              child: Image.asset(
+                'assets/images/img_7.png',
+                fit: BoxFit.fill,
               ),
             ),
-          ),
-          const SizedBox(height: 8), // Add spacing
-          Row(
-            children: [
-              Expanded(
-                child: Row(
-                  children: [
-                    Icon(Icons.timer_outlined, color: newpurble, size: 16),
-                    const SizedBox(width: 2), // Add spacing
-                    Text('12 Minutes', style: TextStyle(color: Colors.white)),
-                  ],
+            const SizedBox(height: 7), // Add spacing
+            Column(
+              children: [
+                const Align(
+                  alignment: Alignment.center,
+                  child: Text(
+                    'Squat exercise',
+                    style: TextStyle(
+                      color: newpurble,
+                      fontSize: 18,
+                      fontWeight: FontWeight.w400,
+                    ),
+                  ),
                 ),
-              ),
-              Expanded(
-                child: Row(
-                  children: [
-                    Icon(Icons.fireplace_outlined, color: newpurble, size: 16),
-                    const SizedBox(width: 2), // Add spacing
-                    Text('120 Kcal', style: TextStyle(color: Colors.white)),
-                  ],
-                ),
-              ),
-            ],
-          ),
-                    ],)
+                SizedBox(height: height/30,),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [makeExerciseDetails()],
+                )
+              ],
+            ),
           ],
         ),
       ),
+    );
+  }
+
+  Widget makeExerciseDetails() {
+    return Row(
+      children: [
+        Container(
+          child: (const Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Icon(Icons.fireplace_outlined, size: 12, color: purbleColor),
+              SizedBox(width: 5),
+              Text("120 ka", style: TextStyle(fontSize: 12, color: Colors.white)),
+            ],
+          )),
+        ),
+        const SizedBox(
+          height: 20,
+          width: 50,
+          child: VerticalDivider(thickness: 2, color: textPurbleColor),
+        ),
+        Container(
+          child: (const Row(
+            children: [
+              Icon(Icons.fireplace_outlined, size: 12, color: purbleColor),
+              SizedBox(width: 5),
+              Text("120 ka", style: TextStyle(fontSize: 12, color: Colors.white)),
+            ],
+          )),
+        ),
+      ],
     );
   }
 }

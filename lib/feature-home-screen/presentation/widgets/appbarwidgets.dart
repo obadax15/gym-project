@@ -5,8 +5,9 @@ import '../../../core/Strings/color.dart';
 import '../../../feature-user-details/presentation/pages/user-info.dart';
 
 class AppBarWidget extends StatelessWidget {
-  const AppBarWidget({Key? key, required this.title}) : super(key: key);
+  const AppBarWidget({Key? key, required this.title, this.name}) : super(key: key);
   final String title;
+   final String? name;
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +23,7 @@ class AppBarWidget extends StatelessWidget {
         children: [
           Expanded(
             child: Text(
-              title,
+              title + '${name == null?'': " ${name}"}',
               style: const TextStyle(
                 color: Color.fromRGBO(200, 108, 254, 1),
                 fontSize: 26,

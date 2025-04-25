@@ -10,15 +10,16 @@ part 'login_state.dart';
 
 class LogInCubit extends Cubit<LoginState> {
   LogInCubit() : super(LoginState.initial());
+  var rr;
   Future logIn(String userName, String email, String password, )async{
+
     try{
       emit(state.copyWith(loginStatus: LoginStatus.loading));
-      var rr=await LoginRepo.logIn(userName, email, password, );
+     rr=await LoginRepo.logIn(userName, email, password, );
       String token=rr['key'];
       SharedPreferences prefs = await SharedPreferences.getInstance();
       await prefs.setString('token', token);
-      Token.token=token;
-      await LoginApi.fetchSessionId();
+      Token.token=(prefs.getString('token'))!;
 await LoginApi.getStoredSessionId();
 
       print(Token.token.toString());

@@ -1,24 +1,27 @@
+// ignore_for_file: avoid_print
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gymproject/feature-login/business-logic/login/login_cubit.dart';
 
-import '../../../core/Strings/color.dart';
 import '../../../feature-home-screen/presentation/pages/home-screen.dart';
 class LogInButton extends StatelessWidget {
   final TextEditingController usernameController;
   final TextEditingController emailController;
   final TextEditingController passwordController;
-
+final Function formsubmit;
   const LogInButton({
-    Key? key,
+    super.key,
     required this.usernameController,
     required this.emailController,
-    required this.passwordController,
-  }) : super(key: key);
+    required this.passwordController, required this.formsubmit,
+
+  });
 
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<LogInCubit, LoginState>(
+
       listener: (context, state) {
         print('Login Status: ${state.loginStatus}');
         if (state.loginStatus == LoginStatus.success) {
@@ -30,7 +33,7 @@ class LogInButton extends StatelessWidget {
           );
         } else if (state.loginStatus == LoginStatus.failure) {
           ScaffoldMessenger.of(context).showSnackBar(
-            const SnackBar(content: Text('Login Failed'), backgroundColor: Colors.redAccent),
+             SnackBar(content: Text('$state.loginStatus'), backgroundColor: Colors.redAccent),
           );
         }
       },
@@ -42,6 +45,7 @@ class LogInButton extends StatelessWidget {
               emailController.text,
               passwordController.text,
             );
+            formsubmit();
           },
           child: Container(
             decoration: BoxDecoration(

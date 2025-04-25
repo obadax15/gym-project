@@ -104,118 +104,106 @@ class _FirstTimePageViewState extends State<FirstTimePageView> {
     super.dispose();
   }
 
-    void _onDone() async {
-      SharedPreferences prefs = await SharedPreferences.getInstance();
-      await prefs.setBool('has_seen_page_view', true);
+  void _onDone() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    await prefs.setBool('has_seen_page_view', true);
 
-      if (mounted && context != null) {
-        print('Navigating to LoginScreen');
-        Navigator.pushReplacement(
-          context,
-          MaterialPageRoute(builder: (context) => LogInScreen()),
-        );
-      } else {
-        print('Context is unmounted or null');
-      }
-
+    if (mounted) {
+      print('Navigating to LoginScreen');
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (context) => LogInScreen(isupdate: true)),
+      );
+    } else {
+      print('Context is unmounted or null');
+    }
   }
 
-    @override
-    Widget build(BuildContext context) {
-      double width = MediaQuery
-          .of(context)
-          .size
-          .width;
-      double height = MediaQuery
-          .of(context)
-          .size
-          .height;
+  @override
+  Widget build(BuildContext context) {
+    double height = MediaQuery.of(context).size.height;
 
-      return Scaffold(
-        body: Stack(
-          children: [
-            PageView.builder(
-              controller: _pageController,
-              itemCount: photoAssets.length,
-              itemBuilder: (context, index) {
-                return Image.asset(
-                  photoAssets[index],
-                  fit: BoxFit.cover,
-                );
-              },
-            ),
-            Positioned(
-              left: 0,
-              right: 0,
-              bottom: height / 2.4,
-              child: Container(
-                padding: EdgeInsets.all(12),
-                height: height / 4,
-                width: MediaQuery
-                    .of(context)
-                    .size
-                    .width,
-                color: purbleColor,
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Image.asset(
-                      _currentPage == photoAssets.length - 3
-                          ? 'assets/images/img_10.png'
-                          : _currentPage == photoAssets.length - 2
-                          ? 'assets/images/img_11.png'
-                          : 'assets/images/img_13.png',
-                      height: 30,
-                      width: 30,
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.all(38.0),
-                      child: Center(
-                        child: Text(
-                          _currentPage == photoAssets.length - 3
-                              ? 'Start your journey towards \n   more active lifestyle'
-                              : _currentPage == photoAssets.length - 2
-                              ? 'Find nutrition tips that fit\n        your lifestyle'
-                              : 'A community for you,\n   challenge yourself',
-                          style: TextStyle(color: Colors.white, fontSize: 20, fontWeight: FontWeight.bold),
-                        ),
+    return Scaffold(
+      body: Stack(
+        children: [
+          PageView.builder(
+            controller: _pageController,
+            itemCount: photoAssets.length,
+            itemBuilder: (context, index) {
+              return Image.asset(
+                photoAssets[index],
+                fit: BoxFit.cover,
+              );
+            },
+          ),
+          Positioned(
+            left: 0,
+            right: 0,
+            bottom: height / 2.4,
+            child: Container(
+              padding: EdgeInsets.all(12),
+              height: height / 4,
+              width: MediaQuery.of(context).size.width,
+              color: purbleColor,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Image.asset(
+                    _currentPage == photoAssets.length - 3
+                        ? 'assets/images/img_10.png'
+                        : _currentPage == photoAssets.length - 2
+                            ? 'assets/images/img_11.png'
+                            : 'assets/images/img_13.png',
+                    height: 30,
+                    width: 30,
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(38.0),
+                    child: Center(
+                      child: Text(
+                        _currentPage == photoAssets.length - 3
+                            ? 'Start your journey towards \n   more active lifestyle'
+                            : _currentPage == photoAssets.length - 2
+                                ? 'Find nutrition tips that fit\n        your lifestyle'
+                                : 'A community for you,\n   challenge yourself',
+                        style: TextStyle(color: Colors.white, fontSize: 20, fontWeight: FontWeight.bold),
                       ),
                     ),
-                  ],
-                ),
-              ),
-            ),
-            Positioned(
-              bottom: 32,
-              left: 0,
-              right: 0,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  SmoothPageIndicator(
-                    controller: _pageController,
-                    count: photoAssets.length,
-                    effect: WormEffect(
-                      activeDotColor: Colors.blue,
-                      dotColor: Colors.grey,
-                      dotHeight: 12,
-                      dotWidth: 12,
-                    ),
                   ),
-                  SizedBox(height: 16),
-                  ElevatedButton(
-                    onPressed: () async {
-                      print('Get Started Button Pressed'); // Debug message
-                      _onDone();
-                    },
-                    child: Text("Get Started"),
-                  )
-
                 ],
               ),
             ),
-          ],
-        ),
-      );
-    }
+          ),
+          Positioned(
+            bottom: 32,
+            left: 0,
+            right: 0,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                SmoothPageIndicator(
+                  controller: _pageController,
+                  count: photoAssets.length,
+                  effect: WormEffect(
+                    activeDotColor: Colors.blue,
+                    dotColor: Colors.grey,
+                    dotHeight: 12,
+                    dotWidth: 12,
+                  ),
+                ),
+                SizedBox(height: 16),
+                ElevatedButton(
+                  onPressed: () async {
+                    print('Get Started Button Pressed'); // Debug message
+                    _onDone();
+                  },
+                  child: Text("Get Started"),
+                )
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
   }
+}

@@ -5,6 +5,7 @@ import 'package:flutter/widgets.dart';
 import 'package:gymproject/core/Strings/color.dart';
 import 'package:gymproject/core/Strings/token.dart';
 import 'package:gymproject/feature-home-screen/presentation/widgets/appbarwidgets.dart';
+import 'package:gymproject/feature-workouts/presentation/pages/show-routine-screen.dart';
 import 'package:gymproject/feature-workouts/presentation/widgets/routines.dart';
 
 import '../../../feature-home-screen/presentation/widgets/weekly-workouts-widget.dart';
@@ -100,9 +101,14 @@ class _WorkOutsScreenState extends State<WorkOutsScreen> {
               flex: 7,
               child: ListView.builder(
                 itemCount: 4,
-                itemBuilder: (_, index) => Padding(
-                  padding: const EdgeInsets.all(19.0),
-                  child: RoutinesWidget(),
+                itemBuilder: (_, index) => GestureDetector(
+                  onTap: (){
+                    Navigator.of(context).push(MaterialPageRoute(builder: (_)=>Show_Routine_Screen(index2: selectedindedx,)));
+                  },
+                  child: Padding(
+                    padding: const EdgeInsets.all(19.0),
+                    child: RoutinesWidget(),
+                  ),
                 ),
               ),
             ),
